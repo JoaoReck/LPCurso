@@ -1,10 +1,22 @@
 {
   "hosting": {
     "public": "public",
-    "ignore": [
-      "firebase.json",
-      "**/.*",
-      "**/node_modules/**"
+    "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
+    "redirects": [
+      {
+        "source": "/",
+        "destination": "/LPCurso",
+        "type": 301
+      }
+    ],
+    "rewrites": [
+      {
+        "source": "/",
+        "run": {
+          "serviceId": "LPCurso",
+          "region": "southamerica-east1"
+        }
+      }
     ]
   }
 }
