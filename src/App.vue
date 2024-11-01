@@ -5,6 +5,8 @@
 <script setup>
 defineOptions({
   name: "App",
-  created() {},
+  created() {
+    var self = this;
+  },
 });
 </script>

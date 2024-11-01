@@ -1,75 +1,86 @@
 <template>
   <q-layout view="lHh Lpr lFf">
-    <q-header elevated class="bg-purple-9 text-white" height-hint="98">
+    <q-header
+      v-if="widthScreen > 1024"
+      elevated
+      class="bg-purple-9 text-white"
+      height-hint="98"
+    >
       <q-toolbar>
         <q-img
           src="../assets/Investidor Premium4.png"
-          style="height: 125px; max-width: 135px; margin-left: 50px"
+          style="height: 80px; max-width: 135px; margin-left: 50px"
         />
         <div class="q-ml-xl">
           <q-btn
             @mouseover="passoumouse(1)"
             @mouseleave="tiroumouse()"
+            @click="mudaPagina(1)"
             rounded
             flat
             size="18px"
-            :style="style1"
+            :style="style1 + 'font-weight: bold;'"
             label="Finanças"
           />
           <q-btn
             @mouseover="passoumouse(2)"
             @mouseleave="tiroumouse"
+            @click="mudaPagina(2)"
             rounded
             flat
             size="18px"
-            :style="style2"
+            :style="style2 + 'font-weight: bold;'"
             label="Bancos"
             class="q-ml-xl"
           />
           <q-btn
             @mouseover="passoumouse(3)"
             @mouseleave="tiroumouse"
+            @click="mudaPagina(3)"
             rounded
             flat
             size="18px"
-            :style="style3"
+            :style="style3 + 'font-weight: bold;'"
             label="Ganhar Dinheiro"
             class="q-ml-xl"
           />
           <q-btn
             @mouseover="passoumouse(4)"
             @mouseleave="tiroumouse"
+            @click="mudaPagina(4)"
             rounded
             flat
             size="18px"
-            :style="style4"
+            :style="style4 + 'font-weight: bold;'"
             label="Economizar Dinheiro"
             class="q-ml-xl"
           />
           <q-btn
             @mouseover="passoumouse(5)"
             @mouseleave="tiroumouse"
+            @click="mudaPagina(5)"
             rounded
             flat
             size="18px"
-            :style="style5"
+            :style="style5 + 'font-weight: bold;'"
             label="Empregos"
             class="q-ml-xl"
           />
           <q-btn
             @mouseover="passoumouse(6)"
             @mouseleave="tiroumouse"
+            @click="mudaPagina(6)"
             rounded
             flat
             size="18px"
-            :style="style6"
+            :style="style6 + 'font-weight: bold;'"
             label="Estudar"
             class="q-ml-xl"
           />
         </div>
       </q-toolbar>
     </q-header>
-    <q-page-container style="position: relative">
+    <q-page-container style="position: relative" class="bg-blue-grey-0">
       <router-view />
     </q-page-container>
     <q-footer
@@ -123,13 +134,14 @@ defineOptions({
   name: "MainLayout",
   data() {
     return {
-      widthScreen: 0,
-      style1: ";font-family: Varela Round",
-      style2: ";font-family: Varela Round",
-      style3: ";font-family: Varela Round",
-      style4: ";font-family: Varela Round",
-      style5: ";font-family: Varela Round",
-      style6: ";font-family: Varela Round",
+      widthScreen: 1025,
+      fonte: "font-family: Varela Round",
+      style1: this.fonte,
+      style2: this.fonte,
+      style3: this.fonte,
+      style4: this.fonte,
+      style5: this.fonte,
+      style6: this.fonte,
     };
   },
   created() {},
@@ -148,41 +160,70 @@ defineOptions({
     },
     passoumouse(botao) {
       var self = this;
-      self.style1 = ";font-family: Varela Round";
-      self.style2 = ";font-family: Varela Round";
-      self.style3 = ";font-family: Varela Round";
-      self.style4 = ";font-family: Varela Round";
-      self.style5 = ";font-family: Varela Round";
-      self.style6 = ";font-family: Varela Round";
+      self.style1 = self.fonte;
+      self.style2 = self.fonte;
+      self.style3 = self.fonte;
+      self.style4 = self.fonte;
+      self.style5 = self.fonte;
+      self.style6 = self.fonte;
       switch (botao) {
         case 1:
-          self.style1 = "background-color: #02de3dcc;font-family: Varela Round";
+          self.style1 =
+            "font-weight: bold;background-color: #02de3dcc;font-family: Varela Round";
           break;
         case 2:
-          self.style2 = "background-color: #ffef0dcc;font-family: Varela Round";
+          self.style2 =
+            "font-weight: bold;background-color: #ffef0dcc;font-family: Varela Round";
           break;
         case 3:
-          self.style3 = "background-color: #02de3dcc;font-family: Varela Round";
+          self.style3 =
+            "font-weight: bold;background-color: #02de3dcc;font-family: Varela Round";
           break;
         case 4:
-          self.style4 = "background-color: #ff0000cc;font-family: Varela Round";
+          self.style4 =
+            "font-weight: bold;background-color: #ff0000cc;font-family: Varela Round";
           break;
         case 5:
-          self.style5 = "background-color: #000000cc;font-family: Varela Round";
+          self.style5 =
+            "font-weight: bold;background-color: #000000cc;font-family: Varela Round";
           break;
         case 6:
-          self.style6 = "background-color: #0298decc;font-family: Varela Round";
+          self.style6 =
+            "font-weight: bold;background-color: #0298decc;font-family: Varela Round";
           break;
       }
     },
     tiroumouse() {
       var self = this;
-      self.style1 = "background-color: ;font-family: Varela Round";
-      self.style2 = "background-color: ;font-family: Varela Round";
-      self.style3 = "background-color: ;font-family: Varela Round";
-      self.style4 = "background-color: ;font-family: Varela Round";
-      self.style5 = "background-color: ;font-family: Varela Round";
-      self.style6 = "background-color: ;font-family: Varela Round";
+      self.style1 = self.fonte;
+      self.style2 = self.fonte;
+      self.style3 = self.fonte;
+      self.style4 = self.fonte;
+      self.style5 = self.fonte;
+      self.style6 = self.fonte;
+    },
+    mudaPagina(pagina) {
+      var self = this;
+      switch (pagina) {
+        case 1:
+          self.$router.push("/Financas");
+          break;
+        case 2:
+          self.$router.push("/Bancos");
+          break;
+        case 3:
+          self.$router.push("/GanharDinheiro");
+          break;
+        case 4:
+          self.$router.push("/EconomizarDinheiro");
+          break;
+        case 5:
+          self.$router.push("/Empregos");
+          break;
+        case 6:
+          self.$router.push("/Estudar");
+          break;
+      }
     },
   },
 });
